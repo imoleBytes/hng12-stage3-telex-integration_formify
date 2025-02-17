@@ -21,7 +21,7 @@ func main() {
 	// this to be accessed through the html form
 	r.POST("/formify/website/:id", HandleFormSubmission)
 
-	if err := r.Run(); err != nil {
+	if err := r.Run("localhost:8080"); err != nil {
 		log.Fatalf("error starting the server: %v\n", err)
 	}
 }
