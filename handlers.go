@@ -61,48 +61,6 @@ var Data = IntegrationStruct{
 	TargetURL: "http://100.25.134.239/generate-formify",
 }
 
-// var IntegrationJSON = `{
-// 	"data": {
-// 		"date": {
-// 		"created_at": "2025-02-17",
-// 		"updated_at": "2025-02-17"
-// 		},
-// 		"descriptions": {
-// 		"app_name": "Formify FaaS",
-// 		"app_description": "Formify is a seamless Form as a Service (FaaS) tool that empowers users to collect and manage form data without the need for a backend infrastructure. With Formify, users can simply embed a URL into the 'action' attribute of an HTML form, and the submitted data will be automatically processed and sent to a designated Telex channel.\n\nGenerate unique action attribbute value for your HTML Forms",
-// 		"app_logo": "https://img.freepik.com/free-vector/retro-circular-pattern-design_1308-175051.jpg?t=st=1739808712~exp=1739812312~hmac=f03b43859fc31fbdd675f1907599bd626959e488186958f208d879c6fd1ef10a&w=740",
-
-// 		"app_url": "http://100.25.134.239",
-// 		"background_color": "#fff"
-// 		},
-// 		"is_active": true,
-// 		"integration_type": "modifier",
-// 		"key_features": [
-// 		"No Backend Required",
-// 		"Easy Integration",
-// 		"Real-time Data Submission",
-// 		"Scalable and Secure",
-// 		"No Extra Coding Required"
-// 		],
-// 		"author": "Imoleayo Kolawole",
-// 		"settings": [
-// 		{
-// 			"label": "Form Name",
-// 			"type": "text",
-// 			"required": true,
-// 			"default": ""
-// 		},
-// 		{
-// 			"label": "Website",
-// 			"type": "text",
-// 			"required": true,
-// 			"default": ""
-// 		}
-// 		],
-// 		"target_url": "http://100.25.134.239/generate-formify",
-// 	}
-// }`
-
 // this returns the integration json
 func HandleIntegrationJSON(ctx *gin.Context) {
 	ctx.JSON(200, gin.H{
