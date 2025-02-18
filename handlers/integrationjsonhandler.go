@@ -1,6 +1,8 @@
 package handlers
 
 import (
+	"os"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -40,7 +42,7 @@ var Data = IntegrationStruct{
 		{Label: "Website", Type: "text", Default: "", Required: true},
 		{Label: "ChannelID", Type: "text", Default: "", Required: true},
 	},
-	TargetURL: "https://hng12-stage3-telex-integration-formify.onrender.com/generate-formify",
+	TargetURL: os.Getenv("BASE_URL") + "/generate-formify",
 }
 
 // this returns the integration json
