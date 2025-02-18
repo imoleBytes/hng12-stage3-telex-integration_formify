@@ -52,9 +52,9 @@ func HandleGenerate(ctx *gin.Context) {
 
 	url := GenerateUniqueURL(msgReq.Settings)
 
-	msg := fmt.Sprintf("Here's the url for <b>[%s Form]<b>: , (%s)\n", form_name, url)
-	msg += "Put the url in the action attribute of your form and set the method to POST"
-	msg += "Sit back and start getting data from the form in this channel!..."
+	msg := fmt.Sprintf("Here's the url for <b>[%s Form]</b>: , (%s)\n........................\n", form_name, url)
+	msg += "Put the url in the action attribute of your form and set the method to POST\n"
+	msg += "Sit back and start getting data from the form in this channel!...\n"
 
 	ctx.JSON(200, gin.H{
 		"event_name": "Unique URL Generated",
