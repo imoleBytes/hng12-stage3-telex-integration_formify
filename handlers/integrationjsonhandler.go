@@ -34,8 +34,12 @@ var Data = IntegrationStruct{
 		"Scalable and Secure",
 		"No Extra Coding Required",
 	},
-	Author:    "Imoleayo Kolawole",
-	Settings:  []Setting{{Label: "Form Name", Type: "text", Default: "", Required: true}, {Label: "Website", Type: "text", Default: "", Required: true}},
+	Author: "Imoleayo Kolawole",
+	Settings: []Setting{
+		{Label: "Form Name", Type: "text", Default: "", Required: true},
+		{Label: "Website", Type: "text", Default: "", Required: true},
+		{Label: "ChannelID", Type: "text", Default: "", Required: true},
+	},
 	TargetURL: "https://hng12-stage3-telex-integration-formify.onrender.com/generate-formify",
 }
 
