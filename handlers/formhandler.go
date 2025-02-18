@@ -13,7 +13,28 @@ func HandleFormSubmission(ctx *gin.Context) {
 	website := ctx.Param("website")
 	channel_id := ctx.Param("channel_id")
 
-	err := WebhookSendData(channel_id, website)
+	println(website, "and", channel_id)
+
+	err := ctx.Request.ParseForm()
+	if err != nil {
+		ctx.JSON(400, gin.H{"error": "Unable to parse form"})
+		return
+	}
+	// Retrieve all form data dynamically
+	formData := make(map[string]interface{})
+	for key, values := range ctx.Request.PostForm {
+		if len(values) == 1 {
+			formData[key] = values[0] // Store as string if single value
+		} else {
+			formData[key] = values // Store as slice if multiple values
+		}
+	}
+
+	tmpl := FormatFormDataToHTML(formData)
+
+	// formDatastr, _ := json.Marshal(formData)
+
+	err = WebhookSendData(tmpl, channel_id, website)
 	if err != nil {
 		ctx.JSON(500, gin.H{
 			"error": err.Error(),
@@ -29,13 +50,24 @@ func HandleFormSubmission(ctx *gin.Context) {
 	})
 }
 
-func WebhookSendData(channel_id, website string) error {
+func FormatFormDataToHTML(form map[string]interface{}) string {
+	msg := "*******************\n"
+
+	for key, val := range form {
+		msg += fmt.Sprintf("%s:\t\t%v\n", key, val)
+	}
+	msg += "*******************\n"
+	return msg
+}
+
+func WebhookSendData(formdata, channel_id, website string) error {
 	url := "https://ping.telex.im/v1/webhooks/" + channel_id
+
 	data := map[string]string{
 		"event_name": "string",
-		"message":    "form submitted!!!!",
+		"message":    formdata,
 		"status":     "success",
-		"username":   website,
+		"username":   website + ": form submission",
 	}
 
 	jsonData, err := json.Marshal(data)
