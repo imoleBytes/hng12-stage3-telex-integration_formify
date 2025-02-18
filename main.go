@@ -20,7 +20,7 @@ func main() {
 	r.POST("/generate-formify", handlers.HandleGenerate)
 
 	// this to be accessed through the html form
-	r.POST("/formify/website/:id", handlers.HandleFormSubmission)
+	r.POST("/formify/:website/:channel_id", handlers.HandleFormSubmission)
 
 	// the index route for health
 	r.GET("/", func(ctx *gin.Context) {

@@ -1,5 +1,11 @@
 package handlers
 
+import (
+	"fmt"
+	"os"
+	"regexp"
+)
+
 type Setting struct {
 	Label    string `json:"label"`
 	Type     string `json:"type"`
@@ -34,16 +40,34 @@ type MsgRequest struct {
 	Message   string    `json:"message"`
 }
 
-func ParseSettings(settings []Setting) (form_name, website string) {
-
+func GenerateUniqueURL(settings []Setting) string {
+	var (
+		// form_name  string
+		website    string
+		channel_id string
+	)
+	var BASE_URL = os.Getenv("BASE_URL")
 	for _, setting := range settings {
 		switch setting.Label {
-		case "Form Name":
-			form_name = setting.Default
+		// case "Form Name":
+		// 	form_name = setting.Default
 
 		case "Website":
 			website = setting.Default
+		case "ChannelID":
+			channel_id = setting.Default
 		}
 	}
-	return
+	return fmt.Sprintf("%s/formify/%s/%s", BASE_URL, website, channel_id)
+}
+
+// extractText extracts text from the first <p> tag
+func ExtractText(input string) string {
+	re := regexp.MustCompile(`<p>(.*?)</p>`) // Regex to match text inside <p> tags
+	matches := re.FindStringSubmatch(input)
+
+	if len(matches) > 1 {
+		return matches[1] // Return only the extracted text
+	}
+	return ""
 }

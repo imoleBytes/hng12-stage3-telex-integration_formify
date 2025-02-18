@@ -38,16 +38,28 @@ func HandleGenerate(ctx *gin.Context) {
 	log.Printf("Settings are: %+v\n", msgReq.Settings)
 	fmt.Println("*******************")
 
-	// channel_id := data["channel_id"].(string)
-	// msg := data["message"].(string)
-	// setts := data["settings"].([]map[string]interface{})
+	text := ExtractText(msgReq.Message)
+	if text != "/generate_url" {
+		ctx.JSON(400, gin.H{
+			"status":  "error",
+			"message": "invalid command",
+		})
+		return
+	}
+	log.Println("command is ", text)
 
-	url := "http://localhost/formify/website/" + msgReq.ChannelID
+	form_name := msgReq.Settings[0].Default
+
+	url := GenerateUniqueURL(msgReq.Settings)
+
+	msg := fmt.Sprintf("Here's the url for <b>[%s Form]<b>: , (%s)\n", form_name, url)
+	msg += "Put the url in the action attribute of your form and set the method to POST"
+	msg += "Sit back and start getting data from the form in this channel!..."
 
 	ctx.JSON(200, gin.H{
 		"event_name": "Unique URL Generated",
 		// "message":    "Hello, Use this Url for the form world. I hope you are happy happy today",
-		"message":  fmt.Sprintf("Here's the url for the Form: , (%s)", url),
+		"message":  msg,
 		"status":   "success",
 		"username": "formify-bot",
 	})
