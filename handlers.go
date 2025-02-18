@@ -19,12 +19,13 @@ type IntegrationStruct struct {
 		AppURL          string `json:"app_url"`
 		BackgroundColor string `json:"background_color"`
 	} `json:"descriptions"`
-	IsActive        bool      `json:"is_active"`
-	IntegrationType string    `json:"integration_type"`
-	KeyFeatures     []string  `json:"key_features"`
-	Author          string    `json:"author"`
-	Settings        []Setting `json:"settings"`
-	TargetURL       string    `json:"target_url"`
+	IntegrationCategory string    `json:"integration_category"`
+	IsActive            bool      `json:"is_active"`
+	IntegrationType     string    `json:"integration_type"`
+	KeyFeatures         []string  `json:"key_features"`
+	Author              string    `json:"author"`
+	Settings            []Setting `json:"settings"`
+	TargetURL           string    `json:"target_url"`
 }
 
 var Data = IntegrationStruct{
@@ -48,8 +49,9 @@ var Data = IntegrationStruct{
 		AppURL:          "http://100.25.134.239",
 		BackgroundColor: "#fff",
 	},
-	IsActive:        true,
-	IntegrationType: "modifier",
+	IntegrationCategory: "CRM & Customer Support",
+	IsActive:            true,
+	IntegrationType:     "modifier",
 	KeyFeatures: []string{"No Backend Required",
 		"Easy Integration",
 		"Real-time Data Submission",
