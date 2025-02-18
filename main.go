@@ -21,6 +21,13 @@ func main() {
 	// this to be accessed through the html form
 	r.POST("/formify/website/:id", HandleFormSubmission)
 
+	// the index route for health
+	r.GET("/", func(ctx *gin.Context) {
+		ctx.JSON(200, gin.H{
+			"message": "server running fine",
+		})
+	})
+
 	if err := r.Run("localhost:8080"); err != nil {
 		log.Fatalf("error starting the server: %v\n", err)
 	}
