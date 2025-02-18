@@ -29,7 +29,7 @@ func main() {
 		})
 	})
 
-	if err := r.Run("localhost:8080"); err != nil {
+	if err := r.Run(); err != nil {
 		log.Fatalf("error starting the server: %v\n", err)
 	}
 }
