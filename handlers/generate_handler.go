@@ -19,10 +19,10 @@ import (
 // }'
 
 func HandleGenerate(ctx *gin.Context) {
-	// var msgReq MsgRequest
-	var data map[string]interface{}
+	var msgReq MsgRequest
+	// var data map[string]interface{}
 
-	err := ctx.ShouldBindJSON(&data)
+	err := ctx.Bind(&msgReq)
 	if err != nil {
 		log.Println("error bindind post data: ", err)
 		ctx.JSON(400, gin.H{
@@ -31,13 +31,18 @@ func HandleGenerate(ctx *gin.Context) {
 		return
 	}
 
-	log.Println(data)
+	log.Printf("All request data from telex: %+v\n", msgReq)
+	fmt.Println("*******************")
+	log.Printf("Channel ID is: %s\n", msgReq.ChannelID)
+	log.Printf("Message is: %s\n", msgReq.Message)
+	log.Printf("Settings are: %+v\n", msgReq.Settings)
+	fmt.Println("*******************")
 
-	channel_id := data["channel_id"].(string)
+	// channel_id := data["channel_id"].(string)
 	// msg := data["message"].(string)
 	// setts := data["settings"].([]map[string]interface{})
 
-	url := "http://localhost/formify/website/" + channel_id
+	url := "http://localhost/formify/website/" + msgReq.ChannelID
 
 	ctx.JSON(200, gin.H{
 		"event_name": "Unique URL Generated",
