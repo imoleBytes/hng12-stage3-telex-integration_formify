@@ -4,10 +4,19 @@ Formify is a seamless Form as a Service (FaaS) tool that empowers users to colle
 
 Generate unique action attribbute value for your HTML Forms
 
-KEY FEATURES
-No Backend Required,Easy Integration,Real-time Data Submission,Scalable and Secure,No Extra Coding Required
+## KEY FEATURES
 
-Integration json url: http://100.25.134.239/formify-integration.json
+- No Backend Required,
+- Easy Integration,
+- Real-time Data Submission,
+- Scalable and Secure,
+- No Extra Coding Required
+
+## Integration URL
+
+The Integration JSON for Formify FaaS Telex Integration is
+`https://hng12-stage3-telex-integration-formify.onrender.com/formify-integration.json`
+
 target_url: "http://100.25.134.239/generate-formify"
 html form url: "http://100.25.134.239/formify/website/:id"
 

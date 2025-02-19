@@ -15,19 +15,19 @@ func main() {
 
 	r.Use(cors.Default())
 
-	// telex will access these
+	// Telex will access these
+	// ************for getting the integration's json**********
 	r.GET("/formify-integration.json", handlers.HandleIntegrationJSON)
+
+	// *********** this handles the integration commands. in this case , the `/generate_url` command.*************
 	r.POST("/generate-formify", handlers.HandleGenerate)
 
-	// this to be accessed through the html form
+	// The endusers access the integration through this
+	// *********** this to be accessed through the html form ************
 	r.POST("/formify/:website/:channel_id", handlers.HandleFormSubmission)
 
 	// the index route for health
-	r.GET("/", func(ctx *gin.Context) {
-		ctx.JSON(200, gin.H{
-			"message": "server running fine",
-		})
-	})
+	r.GET("/", handlers.HandleIndex)
 
 	if err := r.Run(); err != nil {
 		log.Fatalf("error starting the server: %v\n", err)

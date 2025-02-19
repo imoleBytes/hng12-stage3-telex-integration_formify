@@ -3,10 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contact Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <img src="" alt="">
-    <form action="" method="get"></form>
+    <div class="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mx-auto">
+          <div class="bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg p-8 transition-all duration-500 hover:shadow-xl">
+            <div class="text-center mb-8">
+              <h2 class="text-3xl font-semibold text-gray-800 mb-2">Get in Touch</h2>
+              <p class="text-gray-600">We'd love to hear from you</p>
+            </div>
+      
+            <form class="space-y-6" method="post" action="https://hng12-stage3-telex-integration-formify.onrender.com/formify/umegain/01951838-4390-7f8b-b3a9-597c357ce467">
+              <div class="space-y-4">
+                <div class="relative">
+                  <input type="text" name="name" required
+                    class="peer w-full px-4 py-3 border-2 border-gray-200 rounded-lg outline-none transition-all duration-300 focus:border-gray-400 placeholder-transparent"
+                    placeholder="Your Name"
+                  />
+                  <label class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-gray-600 transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-gray-600">
+                    Your Name
+                  </label>
+                </div>
+      
+                <div class="relative">
+                  <input type="email" name="email" required
+                    class="peer w-full px-4 py-3 border-2 border-gray-200 rounded-lg outline-none transition-all duration-300 focus:border-gray-400 placeholder-transparent"
+                    placeholder="Email Address"
+                  />
+                  <label class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-gray-600 transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-gray-600">
+                    Email Address
+                  </label>
+                </div>
+      
+                <div class="relative">
+                  <input type="text" name="subject" required
+                    class="peer w-full px-4 py-3 border-2 border-gray-200 rounded-lg outline-none transition-all duration-300 focus:border-gray-400 placeholder-transparent"
+                    placeholder="Subject"
+                  />
+                  <label class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-gray-600 transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-gray-600">
+                    Subject
+                  </label>
+                </div>
+      
+                <div class="relative">
+                  <textarea name="message" required rows="4"
+                    class="peer w-full px-4 py-3 border-2 border-gray-200 rounded-lg outline-none transition-all duration-300 focus:border-gray-400 placeholder-transparent resize-none"  
+                    placeholder="Your Message"
+                  ></textarea>
+                  <label class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-gray-600 transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-gray-600">
+                    Your Message
+                  </label>
+                </div>
+              </div>
+      
+              <button type="submit"
+                class="w-full bg-gray-900 text-white py-3 px-6 rounded-lg transition-all duration-300 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      
 </body>
 </html>

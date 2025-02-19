@@ -7,17 +7,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// This generate a unique url to be used in an html form
-
-// "channel_id": "0192dd70-cdf1-7e15-8776-4fee4a78405e",
-// "settings": [
-//   {"label": "maxMessageLength", "type": "number", "default": 30, "required": true},
-//   {"label": "repeatWords", "type": "multi-select", "default": "world, happy", "required": true},
-//   {"label": "noOfRepetitions", "type": "number", "default": 2, "required": true}
-// ],
-// "message": "Hello, world. I hope you are happy today"
-// }'
-
+/*	This handler handles the text sent from telex, processed and then sent a formatted response back
+ */
 func HandleGenerate(ctx *gin.Context) {
 	var msgReq MsgRequest
 	// var data map[string]interface{}
@@ -39,42 +30,30 @@ func HandleGenerate(ctx *gin.Context) {
 	fmt.Println("*******************")
 
 	text := ExtractText(msgReq.Message)
+
 	if text != "/generate_url" {
-		ctx.JSON(400, gin.H{
-			"status":  "error",
-			"message": "invalid command",
+		ctx.JSON(200, gin.H{
+			"event_name": "Invalid Command",
+			"message":    "type '/generate_url' to get the unique url for your html forms",
+			"status":     "success",
+			"username":   "formify-bot",
 		})
+		// ctx.JSON(400, gin.H{
+		// 	"status":  "error",
+		// 	"message": "invalid command",
+		// })
 		return
 	}
-	log.Println("command is ", text)
 
 	form_name := msgReq.Settings[0].Default
-
 	url := GenerateUniqueURL(msgReq.Settings)
+	message := FormatMSG(form_name, url)
 
-	msg := fmt.Sprintf("Here's the url for <b>[%s Form]</b>: , (%s)\n........................\n", form_name, url)
-	msg += "Put the url in the action attribute of your form and set the method to POST\n"
-	msg += "Sit back and start getting data from the form in this channel!...\n"
-
+	// returns the message as a json response to telex
 	ctx.JSON(200, gin.H{
 		"event_name": "Unique URL Generated",
-		// "message":    "Hello, Use this Url for the form world. I hope you are happy happy today",
-		"message":  msg,
-		"status":   "success",
-		"username": "formify-bot",
+		"message":    message,
+		"status":     "success",
+		"username":   "formify-bot",
 	})
-
-	// msg := fmt.Sprintf("Here's the url for Form: %s", msgReq.Settings[])
-
-	// ctx.JSON(202, struct {
-	// 	event_name string
-	// 	message    string
-	// 	status     string
-	// 	username   string
-	// }{
-	// 	event_name: "Unique url Generated",
-	// 	message:    "Hello, Use this Url for the form world. I hope you are happy happy today",
-	// 	status:     "success",
-	// 	username:   "formify-bot",
-	// })
 }
