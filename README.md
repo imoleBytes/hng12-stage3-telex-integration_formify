@@ -21,7 +21,7 @@ The target url is found in the in the JSON.
 
 ## How to set up and Deploy Formify FaaS Integration
 
-# Go API Integration
+# Go Formify FaaS Telex Integration
 
 This project is a Go-based API integration designed for seamless communication with telex. The integration provides a robust and efficient way to respond to Telex target url call and also responds to html form submissions.
 

@@ -40,6 +40,7 @@ type MsgRequest struct {
 	Message   string    `json:"message"`
 }
 
+// This funtion generate url to be embedded on the HTML form
 func GenerateUniqueURL(settings []Setting) string {
 	var (
 		// form_name  string
