@@ -64,7 +64,7 @@ func WebhookSendData(formdata, channel_id, website string) error {
 	url := "https://ping.telex.im/v1/webhooks/" + channel_id
 
 	data := map[string]string{
-		"event_name": "string",
+		"event_name": website + ": form submission",
 		"message":    formdata,
 		"status":     "success",
 		"username":   website + ": form submission",

@@ -3,6 +3,7 @@ package handlers
 import (
 	"fmt"
 	"log"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 )
@@ -28,6 +29,23 @@ func HandleGenerate(ctx *gin.Context) {
 	log.Printf("Message is: %s\n", msgReq.Message)
 	log.Printf("Settings are: %+v\n", msgReq.Settings)
 	fmt.Println("*******************")
+
+	// if msg is as a result of webhook
+
+	if strings.HasPrefix(msgReq.Message, "*****") {
+		ctx.JSON(200, gin.H{
+			"event_name": "Webhook Form Msg",
+			"message":    msgReq.Message,
+			"status":     "success",
+			"username":   "formify-bot",
+		})
+		// ctx.JSON(400, gin.H{
+		// 	"status":  "error",
+		// 	"message": "invalid command",
+		// })
+		return
+	}
+	// *******************
 
 	text := ExtractText(msgReq.Message)
 
