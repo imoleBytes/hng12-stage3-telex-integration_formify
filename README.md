@@ -4,6 +4,8 @@ Formify is a seamless Form as a Service (FaaS) tool that empowers users to colle
 
 Generate unique action attribbute value for your HTML Forms
 
+![Activate Formify FaaS](images/formify-details.png)
+
 ## KEY FEATURES
 
 - No Backend Required,
