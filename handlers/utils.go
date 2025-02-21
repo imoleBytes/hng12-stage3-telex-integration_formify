@@ -77,7 +77,7 @@ func ExtractText(input string) string {
  * 	Just a way to beautify the unique url sent to the user.
  */
 func FormatMSG(form_name, url string) string {
-	msg := fmt.Sprintf("Here's the url for <b>[%s Form]</b>: , (%s)\n........................\n", form_name, url)
+	msg := fmt.Sprintf("Here's the url for <b>[%s Form]</b>:\n%s\n........................\n", form_name, url)
 	msg += "Put the url in the action attribute of your form and set the method to POST\n"
 	msg += "Sit back and start getting data from the form in this channel!...\n"
 	return msg

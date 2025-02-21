@@ -38,9 +38,9 @@ var Data = IntegrationStruct{
 	},
 	Author: "Imoleayo Kolawole",
 	Settings: []Setting{
-		{Label: "Form Name", Type: "text", Default: "", Required: true},
-		{Label: "Website", Type: "text", Default: "", Required: true},
-		{Label: "ChannelID", Type: "text", Default: "", Required: true},
+		{Label: "Form Name", Type: "text", Default: "Contact", Required: true},
+		{Label: "Website", Type: "text", Default: "my-Website", Required: true},
+		{Label: "ChannelID", Type: "text", Default: "01952918-e2c0-7d99-b481-2a3c1b16fb6a", Required: true},
 	},
 	TargetURL: os.Getenv("BASE_URL") + "/generate-formify",
 }
