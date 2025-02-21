@@ -83,11 +83,11 @@ This generate a unique url to be embedded on the HTML form.
 curl -X POST "http://localhost:8080/generate-formify" \
      -H "Content-Type: application/json" \
      -d '{
-       "channel_id": "0192dd70-cdf1-7e15-8776-4fee4a78405e",
+       "channel_id": "01952918-e2c0-7d99-b481-2a3c1b16fb6a",
        "settings": [
-          {"label": "Form Name","type": "text","default": "Contact","required": true},
-          {"label": "Website","type": "text","default": "Umegain","required": true},
-          {"label": "ChannelID","type": "text","default": "0192dd70-cdf1-7e15-8776-4fee4a78405e","required": true}
+          {"label": "Form Name","type": "text","default": "Sample Form","required": true},
+          {"label": "Website","type": "text","default": "sample-website-name","required": true},
+          {"label": "ChannelID","type": "text","default": "01952918-e2c0-7d99-b481-2a3c1b16fb6a","required": true}
         ],
        "message": "/generate_url"
      }'
@@ -126,7 +126,7 @@ curl -X POST "http://localhost:8080/generate-formify" \
   <form
     class="space-y-6"
     method="post"
-    action="https://hng12-stage3-telex-integration-formify.onrender.com/formify/umegain/01951838-4390-7f8b-b3a9-597c357ce467"
+    action="https://hng12-stage3-telex-integration-formify.onrender.com/formify/sample-website-name/01952918-e2c0-7d99-b481-2a3c1b16fb6a"
   >
     <div class="space-y-4">
       <div class="relative">
